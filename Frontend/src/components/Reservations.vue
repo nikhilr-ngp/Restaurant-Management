@@ -61,7 +61,7 @@ export default {
           status: this.status,
         });
         console.log('Reservation created:', response.data);
-        this.fetchReservations(); // Refresh reservations list
+        this.fetchReservations(); 
       } catch (error) {
         console.error('Error creating reservation:', error);
       }
@@ -71,7 +71,7 @@ export default {
       try {
         const response = await axios.delete(`/reservations/${id}`);
         console.log('Reservation deleted:', response.data);
-        this.fetchReservations(); // Refresh reservations list
+        this.fetchReservations(); 
       } catch (error) {
         console.error('Error deleting reservation:', error);
       }

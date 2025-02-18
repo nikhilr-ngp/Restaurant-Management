@@ -31,14 +31,14 @@ export default {
     return {
       menuItemId: '',
       quantity: '',
-      userId: '', // Added userId to the data model
+      userId: '',
       orderItems: [],
     };
   },
   methods: {
     async fetchOrderItems() {
       try {
-        const response = await axios.get('/orders/1/items'); // Assuming order ID = 1 for now
+        const response = await axios.get('/orders/1/items');
         this.orderItems = response.data;
       } catch (error) {
         console.error('Error fetching order items:', error);
@@ -47,36 +47,30 @@ export default {
 
     async addOrderItem() {
       try {
-        // Prepare the data to be sent
         const orderData = {
           menuItemId: this.menuItemId,
           quantity: this.quantity,
-          userId: this.userId, // Include userId in the request payload
+          userId: this.userId, 
         };
 
-        // Log the data to verify it's correct
         console.log('Adding order item with data:', orderData);
 
         const response = await axios.post(`/orders/1/items`, orderData);
 
-        // Log the response for debugging
         console.log('Order item added:', response.data);
 
-        // Refresh order items list
         this.fetchOrderItems();
         
-        // Clear the input fields
         this.menuItemId = '';
         this.quantity = '';
-        this.userId = ''; // Clear userId input
+        this.userId = ''; 
       } catch (error) {
-        // Log the error details
         console.error('Error adding order item:', error.response ? error.response.data : error);
       }
     },
   },
   mounted() {
-    this.fetchOrderItems(); // Fetch order items when component is mounted
+    this.fetchOrderItems(); 
   },
 };
 </script>
