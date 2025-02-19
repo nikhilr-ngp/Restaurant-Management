@@ -17,7 +17,7 @@ export default class User extends BaseModel {
   public password: string
 
   @column()
-  public role: 'customer' | 'staff' | 'admin' //we define the staff and admin in the backend
+  public role: 'customer' | 'staff' | 'admin' 
 
   @beforeSave()
   public static async hashPassword(user: User) {
